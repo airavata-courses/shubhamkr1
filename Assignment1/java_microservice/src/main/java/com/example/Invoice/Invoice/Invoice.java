@@ -1,20 +1,18 @@
 package com.example.Invoice.Invoice;
 
 public class Invoice {
-	String name;
-	float price;
-	
-	
-	public String getName() {
-		return name;
-	}
-	public Invoice(String name, float price) {
+	String item_name;
+	public Invoice(String item_name, float price) {
 		super();
-		this.name = name;
+		this.item_name = item_name;
 		this.price = price;
 	}
-	public void setName(String name) {
-		this.name = name;
+	float price;
+	public String getItem_name() {
+		return item_name;
+	}
+	public void setItem_name(String item_name) {
+		this.item_name = item_name;
 	}
 	public float getPrice() {
 		return price;
@@ -22,6 +20,14 @@ public class Invoice {
 	public void setPrice(float price) {
 		this.price = price;
 	}
+	 @Override
+	    public String toString() {
+	        return "Value{" +
+	                "id=" + item_name +
+	                ", price='" + price + '\'' +
+	                '}';
+	    }
+	
 	
 
 }

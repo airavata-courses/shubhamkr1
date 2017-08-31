@@ -31,19 +31,16 @@ db.close((err) => {
 });
 
 
-
+// calling python microservice to calculate price of added item. Send data to python microservice.
 app.get('/AddItem', function (req, res) {
 
-  var request = require("request");
   request("http://localhost:5000/calculate/items="+JSON.stringify(items), function(error, response, body) {
     if (error) console.log(error);
     else {
       console.log(response);
     }
+    return res.send(response.body);
   });
-
-
-  console.log(request);
  });
 
 
