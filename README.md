@@ -19,16 +19,20 @@ Please install the following
 > node index.js
 3. Terminal would show message
 > Example app listening on port 3000!
+api url = http://localhost:3000/service1
 
 ## Steps for Python server
 1. Go to python_microservice folder
 2. Run hello.py
 > python hello.py
+api url = http://localhost:5000/calculate/items=john
 
 ## Steps for Java Spring server
 1. Go to java_micro_service folder.
 2. Go to target folder
 3. Run following command 
 > java -jar Invoice-0.0.1-SNAPSHOT.jar
+api url = http://localhost:8080/Invoice
+This sends hello response.
 
-To test all services, use index.html page
+#To test all services, please run all servers and then use index.html page
