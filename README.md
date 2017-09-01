@@ -6,8 +6,7 @@ I have used Nodejs , Python with Flask and Java to create three microservices. T
 Please install the following 
 - Nodejs from https://nodejs.org/en/.
 - Python 2.7.x 
-- Flask latest version ()
-- Spring Test Suite
+- Flask latest version from http://flask.pocoo.org/
 - JDK version 8
 
 # To test individiual services
@@ -22,10 +21,12 @@ Please install the following
 ## Steps for Python server
 1. Go to python_microservice folder
 2. Run hello.py
-> python hello.
+> python hello.py
 
 ## Steps for Java Spring server
 1. Go to java_micro_service folder.
 2. Go to target folder
 3. Run following command 
 > java -jar Invoice-0.0.1-SNAPSHOT.jar
+
+To test all services, use index.html page
