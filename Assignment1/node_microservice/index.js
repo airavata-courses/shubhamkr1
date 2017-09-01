@@ -3,8 +3,8 @@ const app = express()
 const sqlite3 = require('sqlite3').verbose()
 var request = require('request')
 
-var items;
 
+// code to make connection to sqlite
 let db = new sqlite3.Database('./db/AddItem', (err) => {
 	if(err){
 		console.error(err.message);
@@ -31,8 +31,16 @@ db.close((err) => {
 });
 
 
+// respond to UI
+var hello = function(req,res,next){
+   res.json({msg: 'Hello from Node server!'});
+   next();
+};
+
+
+
 // calling python microservice to calculate price of added item. Send data to python microservice.
-app.get('/AddItem', function (req, res) {
+var add_item= function (req, res) {
 
   request("http://localhost:5000/calculate/items="+JSON.stringify(items), function(error, response, body) {
     if (error) console.log(error);
@@ -41,9 +49,13 @@ app.get('/AddItem', function (req, res) {
     }
     return res.send(response.body);
   });
- });
+ };
 
 
+app.get('/service1/',[hello,add_item]);
+
+
+//server listens on port
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!')
 })

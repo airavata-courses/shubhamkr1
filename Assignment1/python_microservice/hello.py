@@ -1,11 +1,16 @@
 from flask import Flask
+import requests
 app = Flask(__name__)
 
 
 @app.route("/calculate/items=<name>", methods=['GET'])
 def CalculatePrice(name):
-	price = "20.0";
-	return price
+	if(name):
+	    url = 'http://localhost:8080/Invoice'
+        print "url ->", url
+        r = requests.get(url)
+        return r.text, r.status_code
+	
 
 
 @app.route("/calculate/",methods=['POST'])
