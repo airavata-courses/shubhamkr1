@@ -2,6 +2,8 @@
 
 I have used Nodejs , Python with Flask and Java to create three microservices. They transfer data among themselves using JSON format.
 
+I have created UI using jquery and AJAX. UI calls nodejs which call python which in turn calls java service. Some data is also passed in between the services. 
+
 ## Test on Windows 7 or Linux
 Please install the following 
 - Nodejs from https://nodejs.org/en/.
