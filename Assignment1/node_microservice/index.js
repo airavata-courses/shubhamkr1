@@ -34,7 +34,7 @@ db.close((err) => {
 // respond to UI
 var hello = function(req,res,next){
    res.json({msg: 'Hello from Node server!'});
-   next();
+   //next();
 };
 
 
