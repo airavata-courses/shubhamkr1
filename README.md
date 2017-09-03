@@ -23,6 +23,8 @@ Please install the following
 
 ## Steps for Python server
 1. Go to python_microservice folder
+2. Run following command
+> pip install requests 
 2. Run hello.py
 > python hello.py
 - api url = http://localhost:5000/calculate/items=john
@@ -35,4 +37,4 @@ Please install the following
 - api url = http://localhost:8080/Invoice
 This sends hello response.
 
-#To test all services, please run all servers and then use index.html page
+## To test all services, please run all servers and then use index.html page. Index file is present inside api_server/static folder
