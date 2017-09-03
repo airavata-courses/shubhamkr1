@@ -32,4 +32,6 @@ app.get('http://localhost:8080/', function(req,res){
 });
 
 
-app.listen(app.get('port'));
+app.listen(app.get('port'){
+	console.log('Server  listening on port 20000!')
+});
