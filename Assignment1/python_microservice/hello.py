@@ -6,7 +6,7 @@ app = Flask(__name__)
 @app.route("/calculate/items=<name>", methods=['GET'])
 def CalculatePrice(name):
 	if(name):
-	    url = 'http://localhost:8080/Invoice'
+	    url = 'http://localhost:8080/invoice'
         print "url ->", url
         r = requests.get(url)
         return r.text, r.status_code
