@@ -45,14 +45,15 @@ var add_item= function (req, res) {
   request("http://localhost:5000/calculate/items="+JSON.stringify(items), function(error, response, body) {
     if (error) console.log(error);
     else {
-      console.log(response);
+      console.log(response.body);
+      res.send(response.body+"hello from Node");
     }
-    return res.send(response.body);
+    
   });
  };
 
 
-app.get('/service1/',[hello,add_item]);
+app.get('/nodejs/',[add_item]);
 
 
 //server listens on port

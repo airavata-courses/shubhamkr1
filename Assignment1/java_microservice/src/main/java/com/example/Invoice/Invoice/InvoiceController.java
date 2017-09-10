@@ -9,6 +9,6 @@ public class InvoiceController {
 	@GetMapping("/invoice")
 	
 	public String getInvoice() {
-		return "Hello";
+		return "Hello from Java service";
 	}
 }

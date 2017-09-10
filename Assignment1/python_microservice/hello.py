@@ -1,4 +1,5 @@
 from flask import Flask
+from flask import request
 import requests
 app = Flask(__name__)
 
@@ -9,7 +10,7 @@ def CalculatePrice(name):
 	    url = 'http://localhost:8080/invoice'
         print "url ->", url
         r = requests.get(url)
-        return r.text, r.status_code
+        return "hello from python "+name+" "+r.text, r.status_code
 	
 
 
