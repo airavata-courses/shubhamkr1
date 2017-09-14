@@ -1,0 +1,3 @@
+request
+sqlite3
+amqplib
