@@ -1,10 +1,13 @@
 FROM node:8.5-alpine
 
-ADD . /node
+RUN mkdir -p /node
 WORKDIR /node
 
-ADD package.json /node/
+COPY package.json /node/
+COPY db/AddItem /node/ 
 RUN npm install 
 
-EXPOSE 4444 4445
+COPY index.js /node
+
+EXPOSE 3000
 ENTRYPOINT ["node","index.js"]

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Assignment 1</title>
+</head>
+<body>
+<div id="navbar" >
+          
+          <script type="text/javascript">
+          //calling apigateway
+		function get() {
+			var host = 'http://localhost';
+			var port = 20000;
+			var path = 'apigateway';
+			var url = host + ':' + port + '/' + path;
+			var xmlhttp = new XMLHttpRequest();
+			var responseTextArea = document.getElementById('response');
+			xmlhttp.onreadystatechange = function(){
+				console.log(xmlhttp.readyState);
+				if (xmlhttp.readyState == XMLHttpRequest.DONE) {
+					console.log(xmlhttp.responseText);
+					if (xmlhttp.status == 200)	responseTextArea.innerHTML = xmlhttp.responseText;	
+					else if (xmlhttp.status == 400)	responseTextArea.innerHTML = 'Error 400';
+					else	responseTextArea.innerHTML = 'Unexpected error' + xmlhttp.status;
+				}
+			}
+			xmlhttp.open('GET', url, true);
+			xmlhttp.send();
+		}
+		
+	</script>
+
+        </div>
+        <div >
+			<div >
+				 <span >
+					<button onclick="javascript:get();" type="button">Call to API Server</button>
+				  </span>
+			</div>
+			<br>
+			<div class="form-control" id="response"></div>
+		  </div>
+</body>
+</html>

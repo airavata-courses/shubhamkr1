@@ -90,7 +90,10 @@ var receive= function (req, res) {
  app.get('/receivenode/',[receive]);
 
 
+port = 3000;
+app.listen(port, '0.0.0.0');
+console.log('Listening at http://localhost:' + port)
 //server listens on port
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!')
-})
+//app.listen(3000, function () {
+  //console.log('Example app listening on port 3000!')
+//})
