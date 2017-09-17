@@ -45,17 +45,37 @@ db.close((err) => {
 // calling python microservice to calculate price of added item. Send data to python microservice.
 var add_item_send= function (req, res) {
 
+  // send to python
   amqp.connect('amqp://localhost', function(err, conn) { 
        conn.createChannel(function(err, ch) {
-    		var q = 'hello';
+    		var q = 'node_python';
     		
 	    	ch.assertQueue(q, {durable: false});
     		
    			ch.sendToQueue(q, new Buffer(JSON.stringify(items)));
     		console.log(" [x] Sent %s", JSON.stringify(items));
-			res.json({msg : "Message Sent!  --->"+JSON.stringify(items)});
+			//res.json({msg : "Message Sent!  --->"+JSON.stringify(items)});
   		});
      });
+
+   //recieve from api 
+  amqp.connect('amqp://localhost', function(err, conn) {
+        conn.createChannel(function(err, ch) {
+          var q = 'api_node';
+          //ch.assertQueue(q, {durable: true});
+          console.log(" [*] Waiting for messages in %s. To exit press CTRL+C", q);
+          ch.consume(q, function(msg) {
+              console.log(" [x] Received %s", msg.content.toString());
+              msg_q += msg.content.toString();
+              console.log("Printing msg_q -----------------"+msg_q);  
+              res.json({msg : "Message Received!  ------------->"+msg_q});
+              setTimeout(function() { conn.close()}, 500);
+          }, {noAck: true});
+          console.log("Printing msg_q outside-----------------"+msg_q);
+          
+        });
+  });
+
   };
 
 

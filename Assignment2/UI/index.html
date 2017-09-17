@@ -5,6 +5,7 @@
 </head>
 <body>
 <div id="navbar" >
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
           
           <script type="text/javascript">
           //calling apigateway
@@ -24,21 +25,39 @@
 					else	responseTextArea.innerHTML = 'Unexpected error' + xmlhttp.status;
 				}
 			}
-			xmlhttp.open('GET', url, true);
+			xmlhttp.open('POST', url, true);
 			xmlhttp.send();
 		}
+
+
 		
 	</script>
 
+   
         </div>
         <div >
 			<div >
-				 <span >
-					<button onclick="javascript:get();" type="button">Call to API Server</button>
-				  </span>
+				
+					<!--<button onclick="javascript:get();" type="button">Call to API Server</button>-->
+					
+    		 <input type="text" placeholder="" name="abc" id="mssg">
+    		 <button id="gateway" >Send </button> 
+					
+				 
 			</div>
 			<br>
 			<div class="form-control" id="response"></div>
 		  </div>
+
+       <script>
+	    $("#gateway").click(function(){
+        var msg = $("#mssg").val();
+        console.log("Message to be sent : "+msg);
+        $.ajax({url: "http://localhost:20000/apigateway", data:{text: msg}, type:"GET", success: function(result){
+        document.getElementById('response').innerHTML = result.msg;
+        console.log(result)
+        }});
+        });
+        </script>
 </body>
 </html>
